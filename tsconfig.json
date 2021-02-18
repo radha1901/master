@@ -12,6 +12,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/sparity-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/sparity-lib/tsconfig.spec.json"
     }
 ]
 }

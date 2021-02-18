@@ -5,7 +5,11 @@
   "projects": {
     "sidenav": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+         "spec": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +125,50 @@
           }
         }
       }
-    }},
-  "defaultProject": "sidenav"
+    },
+    "sparity-lib": {
+      "projectType": "library",
+      "root": "projects/sparity-lib",
+      "sourceRoot": "projects/sparity-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sparity-lib/tsconfig.lib.json",
+            "project": "projects/sparity-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sparity-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sparity-lib/src/test.ts",
+            "tsConfig": "projects/sparity-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/sparity-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sparity-lib/tsconfig.lib.json",
+              "projects/sparity-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "sidenav",
+  "cli": {
+    "analytics": "36dc9435-82ee-4f77-af73-a9d90e2c6c3f"
+  }
 }
